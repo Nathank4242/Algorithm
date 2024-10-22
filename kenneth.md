@@ -1,6 +1,13 @@
 I think this is an algorithm
 
 ```javascript
+function getHistory() {
+  DOMSelectors.content.innerHTML = "";
+  DOMSelectors.history.innerHTML = "";
+  let win = 0;
+  let lose = 0;
+  let draw = 0;
+
   for (let i = 0; i < history.length; i++) {
     if (history[i] == "win") {
       win++;
@@ -10,9 +17,17 @@ I think this is an algorithm
       draw++;
     }
 
+    DOMSelectors.history.insertAdjacentHTML(
+      "afterbegin",
+      `<div class="historyCard" id="${history[i]}">
+        <h4>Game ${i + 1}: ${history[i].toUpperCase()}</h4>
+        </div>`
+    );
+  }
+}
 ```
 
-This has for loops and if statements
+This has a for loop to track the wins and losses (iteration) of the player and if statements for (selection). This function is to track wins and losses.
 
 ```javascript
 function rockPaperScissors(input) {
@@ -29,7 +44,33 @@ function rockPaperScissors(input) {
       opponentChoice = "scissors";
     }
   }
+
+  if (opponentChoice == "rock") {
+    if (input == 1) {
+      outcome = "win";
+    } else if (input == 2) {
+      outcome = "lose";
+    } else {
+      outcome = "draw";
+    }
+  } else if (opponentChoice == "paper") {
+    if (input == 2) {
+      outcome = "win";
+    } else if (input == 0) {
+      outcome = "lose";
+    } else {
+      outcome = "draw";
+    }
+  } else {
+    if (input == 0) {
+      outcome = "win";
+    } else if (input == 1) {
+      outcome = "lose";
+    } else {
+      outcome = "draw";
+    }
+  }
 }
 ```
 
-This is an algorithm because it uses for and loops
+This is an algorithm because it uses for and loops this allows different scenarios about whether you win or lose.
